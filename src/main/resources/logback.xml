@@ -27,13 +27,13 @@
 
         <!--规定文件的输出路径,以后日志文件都会记录在这里面-->
 
-        <file>E:/Program File Data\MyDocument/教务系统/EAS-log/run-data.txt</file>
+        <file>E:/Program-File-Data/MyJavaCode/EducationAdminSystem/log/run-data.txt</file>
         <!--日志的拆分和压缩规则,为了防止日志文件过大存储空间不够且难以查找,规定达到某个值就压缩成新文件-->
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
 
             <!--通过制定压缩文件名称来制定文件分割方式,gz是压缩后缀-->
 
-            <fileNamePattern>E:/Program File Data\MyDocument/教务系统/EAS-log/run-data-%i-%d{yyyy-MM-dd}-.txt.gz</fileNamePattern>
+            <fileNamePattern>E:/Program-File-Data/MyJavaCode/EducationAdminSystem/log/run-data-%i-%d{yyyy-MM-dd}-.txt.gz</fileNamePattern>
             <!--表示文件达到1MB就拆分压缩-->
             <maxFileSize>1MB</maxFileSize>
         </rollingPolicy>
