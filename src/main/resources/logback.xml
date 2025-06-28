@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--以上为开头声明-->
+<configuration>
+    <!--    表示日志最多保留30天-->
+    <property name="LOG_MAX_HISTORY" value="1"/>
+<!--    &lt;!&ndash;CONSOLE表示可以打印到控制台&ndash;&gt;-->
+<!--    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">-->
+<!--        &lt;!&ndash;表示直接将日志打印到控制台&ndash;&gt;-->
+<!--        <target>System.out</target>-->
+<!--        <encoder>-->
+<!--            &lt;!&ndash;规定日志的输出格式 %d表示后面的内容是数字,大括号中依次为(举例)-->
+<!--                2022-10-30 10:23:44.423 [INFO] LogBackTest [main] : chu法方法开始执行~~~-->
+<!--                [%-5level]指代的是日志级别,%c指代的是当前的类,[%thread]指代的是限制,%msg指代日志记录的信息,%n表示打完一行换行-->
+<!--             &ndash;&gt;-->
+<!--            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] %c [%thread] : %msg%n</pattern>-->
+<!--        </encoder>-->
+<!--    </appender>-->
+
+    <!--系统日志输入到文件当中去-->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <!--规定日志的输出格式 -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}  : %msg%n</pattern>
+            <!--规定编码格式-->
+            <charset>utf-8</charset>
+        </encoder>
+
+        <!--规定文件的输出路径,以后日志文件都会记录在这里面-->
+
+        <file>E:/Program File Data\MyDocument/教务系统/EAS-log/run-data.txt</file>
+        <!--日志的拆分和压缩规则,为了防止日志文件过大存储空间不够且难以查找,规定达到某个值就压缩成新文件-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+
+            <!--通过制定压缩文件名称来制定文件分割方式,gz是压缩后缀-->
+
+            <fileNamePattern>E:/Program File Data\MyDocument/教务系统/EAS-log/run-data-%i-%d{yyyy-MM-dd}-.txt.gz</fileNamePattern>
+            <!--表示文件达到1MB就拆分压缩-->
+            <maxFileSize>1MB</maxFileSize>
+        </rollingPolicy>
+    </appender>
+    <!--    控制日志的输出情况,ALL表示输出,OFF表示不输出,其他的比如info说明输出info级别及以上的日志信息,下面两个词条分别对应往控制台输出和往文件输出-->
+    <root level="DEBUG">
+<!--        <appender-ref ref="CONSOLE"/>-->
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>
